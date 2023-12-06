@@ -6,7 +6,15 @@ const Users =require("./models/userModel");
 const PORT = process.env.PORT||3333
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: 'https://shiv-frontend.vercel.app/',
+        credentials: true,
+      }
+
+));
+
+
 const {dbConnect}=require("./mongoDb/dbConnection");
 dbConnect(process.env.MONGO_URL);
 const router=require("./routes/userRoutes");
