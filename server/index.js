@@ -20,7 +20,7 @@ app.use("/api/v1/auth",postRouter);
 app.use("/api/auth",router);
 
 app.use("",paymentRouter);
-app.get("/",(req,resp)=>{
+app.use("/",(req,resp)=>{
     
     resp.send("server running");
 })
