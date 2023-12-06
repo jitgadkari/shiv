@@ -3,6 +3,7 @@ const cors = require("cors");
 const app =express();
 require("dotenv").config();
 const Users =require("./models/userModel");
+const PORT = process.env.PORT||3333
 
 app.use(express.json());
 app.use(cors({
@@ -19,7 +20,11 @@ app.use("/api/v1/auth",postRouter);
 app.use("/api/auth",router);
 
 app.use("",paymentRouter);
+app.get("/",(req,resp)=>{
+    
+    resp.send("server running");
+})
 
-app.listen(3333,()=>{
-    console.log("listening on port 3333");
+app.listen(PORT,()=>{
+    console.log(`listening on port ${PORT} `);
 })
