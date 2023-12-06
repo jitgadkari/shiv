@@ -7,7 +7,7 @@ const PORT = process.env.PORT||3333
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://shiv-frontend-vbev-7tpqte1hu-ajit-gadkaris-projects.vercel.app',
+    origin: 'https://shiv-frontend.vercel.app/',
     credentials: true,
   }));
 const {dbConnect}=require("./mongoDb/dbConnection");
