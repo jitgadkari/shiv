@@ -7,10 +7,10 @@ const PORT = process.env.PORT||3333
 
 app.use(express.json());
 app.use(cors(
-    {
-        origin: 'https://shiv-frontend.vercel.app/',
-        credentials: true,
-      }
+    // {
+    //     origin: 'https://shiv-frontend.vercel.app/',
+    //     credentials: true,
+    //   }
 
 ));
 
