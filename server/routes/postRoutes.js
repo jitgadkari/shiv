@@ -1,4 +1,4 @@
-const { createPost, getAllPost, getMyPosts, like, unlike, comment, deletePost, deleteComment,  } = require("../controllers/postController");
+const { createPost, getAllPost, getMyPosts, like, unlike, comment, deletePost, deleteComment, suggestion,  } = require("../controllers/postController");
 
 
 const postRouter=require("express").Router();
@@ -14,6 +14,7 @@ postRouter.put("/like",authMiddleware,like);
 
 postRouter.put("/unlike",authMiddleware,unlike);
 postRouter.put("/comment",authMiddleware,comment);
+postRouter.put("/suggestion",suggestion);
 postRouter.delete("/deleteComment/:postId/:commentId",authMiddleware,deleteComment);
 postRouter.delete("/delete/:postId",deletePost);
 

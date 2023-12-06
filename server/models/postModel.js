@@ -11,26 +11,29 @@ const postSchema = new mongoose.Schema({
     },
     likes: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Users"
+        ref: "Users"
     }],
-    comments:[
-      {
-        comment:{
-            type:String,
-            required:true
-        },
-        commentBy:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Users"
+    comments: [
+        {
+            comment: {
+                type: String,
+                required: true
+            },
+            commentBy: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Users"
+            }
         }
-      }  
     ],
-    postedBy:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Users"
+    postedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Users"
     }
-})
+},
+    {
+        timestamps: true
+    });
 
 
-const Posts=mongoose.model("Posts", postSchema);
+const Posts = mongoose.model("Posts", postSchema);
 module.exports = Posts;

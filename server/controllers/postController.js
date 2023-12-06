@@ -30,7 +30,7 @@ module.exports.createPost = async (req, res, next) => {
 
 module.exports.getAllPost = async (req, resp, next) => {
   try {
-    const allPosts = await Posts.find().populate("postedBy", "_id username profilePic").populate("comments.commentBy", "_id username profilePic");
+    const allPosts = await Posts.find().populate("postedBy", "_id username profilePic").populate("comments.commentBy", "_id username profilePic").sort({createdAt :-1});
     resp.json(allPosts)
 
   } catch (ex) {
@@ -100,6 +100,27 @@ module.exports.comment = async (req, resp, next) => {
       resp.json({ status: true, msg: "comment successfull", result });
     } else {
       resp.json({ status: false, msg: "failed to comment", result })
+    }
+  } catch (ex) {
+    next(ex);
+  }
+}
+module.exports.suggestion = async (req, resp, next) => {
+  try {
+    const postId = req.body.postId;
+    console.log(req.body.suggestion);
+    const result = await Posts.findByIdAndUpdate(postId, {
+      $push: {
+        comments: {
+          comment:
+            req.body.suggestion
+        }
+      }
+    })
+    if (result) {
+      resp.json({ status: true, msg: "suggestion stored successfully", result });
+    } else {
+      resp.json({ status: false, msg: "failed to store suggestion", result })
     }
   } catch (ex) {
     next(ex);
