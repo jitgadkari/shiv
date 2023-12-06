@@ -12,8 +12,8 @@ const router=require("./routes/userRoutes");
 const postRouter=require("./routes/postRoutes");
 const paymentRouter=require("./routes/paymentRoute");
 const aboutRouter = require("./routes/aboutRoutes");
-app.use("/api/v1/auth",postRouter);
-app.use("/api/auth",router);
+app.use("api/v1/auth",postRouter);
+app.use("api/auth",router);
 app.use("",paymentRouter);
 app.use("",aboutRouter);
 
