@@ -5,7 +5,10 @@ require("dotenv").config();
 const Users =require("./models/userModel");
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://shiv-frontend-vbev-7tpqte1hu-ajit-gadkaris-projects.vercel.app',
+    credentials: true,
+  }));
 const {dbConnect}=require("./mongoDb/dbConnection");
 dbConnect(process.env.MONGO_URL);
 const router=require("./routes/userRoutes");
