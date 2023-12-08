@@ -1,4 +1,5 @@
-const About = require("../models/AboutModel")
+const About = require("../models/aboutModel");
+
 
 module.exports.createAboutSection = async (req, resp, next) => {
     const { title, text } = req.body;
